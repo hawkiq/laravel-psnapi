@@ -52,7 +52,7 @@ class PlayStationTrophyService
             $url = "https://m.np.playstation.com/api/trophy/v1/users/{$accountId}/npCommunicationIds/{$npCommunicationId}/trophyGroups/all/trophies";
 
             $response = Http::withToken($accessToken)->get($url, [
-                'npServiceName' => $serviceName
+                'npServiceName' => $serviceName,
             ]);
 
             if ($response->successful()) {

@@ -2,16 +2,16 @@
 
 namespace Hawkiq\LaravelPsnApi\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Hawkiq\LaravelPsnApi\Auth\PsnAuthenticator;
 use Hawkiq\LaravelPsnApi\Resolvers\TitleResolver;
 use Hawkiq\LaravelPsnApi\Services\PlayStationTrophyService;
+use Illuminate\Support\ServiceProvider;
 
 class PsnApiServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/psnapi.php', 'psnapi');
+        $this->mergeConfigFrom(__DIR__.'/../../config/psnapi.php', 'psnapi');
 
         $this->app->singleton(PsnAuthenticator::class, function ($app) {
             return new PsnAuthenticator($app['config']['psnapi']);
@@ -29,7 +29,7 @@ class PsnApiServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/psnapi.php' => config_path('psnapi.php'),
+                __DIR__.'/../../config/psnapi.php' => config_path('psnapi.php'),
             ], 'psnapi-config');
         }
     }

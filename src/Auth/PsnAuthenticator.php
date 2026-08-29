@@ -2,14 +2,17 @@
 
 namespace Hawkiq\LaravelPsnApi\Auth;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class PsnAuthenticator
 {
     protected string $npsso;
+
     protected string $clientId;
+
     protected string $basicAuth;
+
     protected string $redirectUri;
 
     public function __construct(array $config)
@@ -57,14 +60,14 @@ class PsnAuthenticator
 
         $location = $authResponse->header('Location');
 
-        if (!$location || !str_contains($location, 'code=')) {
+        if (! $location || ! str_contains($location, 'code=')) {
             throw new \RuntimeException('Failed to retrieve OAuth authorization code.');
         }
 
         parse_str(parse_url($location, PHP_URL_QUERY), $query);
         $code = $query['code'] ?? null;
 
-        if (!$code) {
+        if (! $code) {
             throw new \RuntimeException('Authorization code missing.');
         }
 
@@ -78,7 +81,7 @@ class PsnAuthenticator
             ]);
 
         if ($tokenResponse->failed()) {
-            throw new \RuntimeException("NPSSO token exchange failed: " . $tokenResponse->body());
+            throw new \RuntimeException('NPSSO token exchange failed: '.$tokenResponse->body());
         }
 
         return $this->storeTokens($tokenResponse->json());
@@ -96,7 +99,7 @@ class PsnAuthenticator
             ]);
 
         if ($response->failed()) {
-            throw new \RuntimeException("Refresh token exchange failed.");
+            throw new \RuntimeException('Refresh token exchange failed.');
         }
 
         return $this->storeTokens($response->json());

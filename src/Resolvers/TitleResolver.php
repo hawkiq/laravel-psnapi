@@ -2,8 +2,8 @@
 
 namespace Hawkiq\LaravelPsnApi\Resolvers;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class TitleResolver
 {
@@ -17,7 +17,7 @@ class TitleResolver
         }
 
         if (str_starts_with($gameId, 'CUSA') || str_starts_with($gameId, 'PPSA')) {
-            if (!str_contains($gameId, '_')) {
+            if (! str_contains($gameId, '_')) {
                 $gameId .= '_00';
             }
 
@@ -33,6 +33,7 @@ class TitleResolver
                 $title = $response->json('titles.0.trophyTitles.0.npCommunicationId');
                 if ($title) {
                     Cache::forever($cacheKey, $title);
+
                     return $title;
                 }
             }
