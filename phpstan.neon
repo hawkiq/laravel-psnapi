@@ -7,3 +7,4 @@ parameters:
     
     # Rule level (0-9). Level 5 is recommended for Laravel packages.
     level: 5
+    phpVersion: 80100
