@@ -9,7 +9,6 @@
 
 A clean, production-ready Laravel package to interact with the PlayStation Network (PSN) API and fetch game trophy data.
 
-This
 ---
 
 ## Installation
