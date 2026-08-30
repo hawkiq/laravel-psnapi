@@ -3,6 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/hawkiq/laravel-psnapi.svg?style=flat-square)](https://packagist.org/packages/hawkiq/laravel-psnapi)
 [![Total Downloads](https://img.shields.io/packagist/dt/hawkiq/laravel-psnapi.svg?style=flat-square)](https://packagist.org/packages/hawkiq/laravel-psnapi)
 [![License](https://img.shields.io/packagist/l/hawkiq/laravel-psnapi.svg?style=flat-square)](https://packagist.org/packages/hawkiq/laravel-psnapi)
+[![Plumb score](https://plumbphp.dev/badges/hawkiq/laravel-psnapi/composite.svg)](https://plumbphp.dev/hawkiq/laravel-psnapi)
 
 
 > ⚠️ **Development Status**: This package is currently under active development as features expand. However, the core trophy fetching architecture is thoroughly structured and stable for use in production environments.
